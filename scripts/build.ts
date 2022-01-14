@@ -1,28 +1,29 @@
-import path from "path";
-import { build as esbuild } from "esbuild";
+import path from 'path';
+import { build } from 'esbuild';
 
 const baseConfig = {
-  platform: "node" as const,
-  target: "esnext" as const,
-  format: "cjs" as const,
+  platform: 'node' as const,
+  target: 'esnext' as const,
   bundle: true,
-  nodePaths: [path.join(__dirname, "../src")],
+  minify: true,
+  nodePaths: [path.join(__dirname, '../src')],
   sourcemap: true,
-  external: [],
+  external: ['lighthouse'],
 };
 
 async function main() {
-  await esbuild({
+  await build({
     ...baseConfig,
-    outdir: path.join(__dirname, "../build/cjs"),
-    entryPoints: [path.join(__dirname, "../src/index.ts")],
+    format: 'cjs',
+    outdir: path.join(__dirname, '../build/cjs'),
+    entryPoints: [path.join(__dirname, '../src/index.ts')],
   });
 
-  await esbuild({
+  await build({
     ...baseConfig,
-    format: "esm",
-    outdir: path.join(__dirname, "../build/esm"),
-    entryPoints: [path.join(__dirname, "../src/index.ts")],
+    format: 'esm',
+    outdir: path.join(__dirname, '../build/esm'),
+    entryPoints: [path.join(__dirname, '../src/index.ts')],
   });
 }
 

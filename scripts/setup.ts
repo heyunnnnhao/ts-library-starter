@@ -11,7 +11,6 @@ const rootPath = path.join(__dirname, "..");
 const yarnLockPath = path.join(rootPath, "yarn.lock");
 const yarnRcPath = path.join(rootPath, ".yarnrc.yml");
 const releaseRcPath = path.join(rootPath, ".releaserc.json");
-const cspellPath = path.join(rootPath, ".cspell.json");
 const packageJsonPath = path.join(rootPath, "package.json");
 const setupPath = __filename;
 const workflowPath = path.join(
@@ -199,10 +198,6 @@ async function cleanup({ packageName }: { packageName: string }) {
     exec("yarn remove slugify prompts")
   );
 
-  await logAsyncTask(
-    "Cleaning cspell",
-    replaceInFile(cspellPath, new Map([["gjuchault", packageName]]))
-  );
 
   await logAsyncTask("Removing setup.ts script", fs.rm(setupPath));
 }
