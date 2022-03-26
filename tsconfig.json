@@ -4,14 +4,15 @@
     "module": "commonjs",
     "target": "es2020",
     "rootDir": "./src",
-    "outDir": "build",
+    "outDir": "dist",
     "strict": true,
+    "jsx": "react-jsx",
     "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true
   },
-  "include": ["./src/**/*.ts"],
-  "exclude": ["./test/**/*.ts"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "test"]
 }
