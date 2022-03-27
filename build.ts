@@ -1,7 +1,6 @@
 import path from 'path';
 import { build } from 'esbuild';
 import { nodeExternalsPlugin } from 'esbuild-node-externals';
-import { sassPlugin } from 'esbuild-sass-plugin';
 
 const baseConfig = {
   platform: 'node' as const,
@@ -12,7 +11,7 @@ const baseConfig = {
   nodePaths: [path.join(__dirname, './src')],
   entryPoints: [path.join(__dirname, './src/index')],
   external: [],
-  plugins: [nodeExternalsPlugin(), sassPlugin()],
+  plugins: [nodeExternalsPlugin()],
 };
 
 async function main() {
